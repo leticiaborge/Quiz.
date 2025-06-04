@@ -1,0 +1,239 @@
+:root {
+  --azul-escuro: #09203f;
+  --azul-medio: #537895;
+  --azul-claro: #a2c7e5;
+  --branco: #f7fafd;
+  --verde: #38ffb6;
+  --vermelho: #ff5d5d;
+  --cinza: #e7e7e7;
+  --shadow: 0 8px 32px 0 rgba(9,32,63,0.2);
+  --borda: 2px solid rgba(83,120,149,0.3);
+  --gradiente: linear-gradient(90deg, #193d6a 0%, #537895 60%, #1b2845 100%);
+  --gradiente-btn: linear-gradient(90deg, #3a5ca2 0%, #6a9ecf 100%);
+  --gradiente-btn2: linear-gradient(90deg, #3a5ca2 0%, #38ffb6 100%);
+  --fonte: 'Montserrat', Arial, sans-serif;
+}
+
+[data-modo="escuro"] {
+  --azul-escuro: #02142c;
+  --azul-medio: #15345c;
+  --azul-claro: #a2c7e5;
+  --branco: #1e2332;
+  --cinza: #222738;
+}
+
+/* Fundo com imagem e canvas animado */
+body, html {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--fonte);
+  background: var(--azul-escuro) url('FOTOFUNDO.jpg') no-repeat center/cover;
+  color: var(--branco);
+  overflow-x: hidden;
+  transition: background 0.5s;
+}
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#bubbles {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* Animação de animais marinhos */
+.sea-animals {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+}
+.sea-animals::before,
+.sea-animals::after {
+  content: "";
+  position: absolute;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.sea-animals::before {
+  left: 10vw;
+  top: 70vh;
+  width: 70px; height: 48px;
+  background: url('https://cdn.pixabay.com/photo/2016/03/31/20/47/fish-1296703_1280.png') no-repeat center/contain;
+  animation: animal1 18s linear infinite;
+}
+.sea-animals::after {
+  right: 8vw;
+  top: 80vh;
+  width: 90px; height: 60px;
+  background: url('https://cdn.pixabay.com/photo/2013/07/12/15/38/octopus-150445_1280.png') no-repeat center/contain;
+  animation: animal2 23s linear infinite;
+}
+@keyframes animal1 {
+  0% { left: 0vw; top: 70vh; }
+  50% { left: 50vw; top: 67vh; }
+  100% { left: 100vw; top: 70vh; }
+}
+@keyframes animal2 {
+  0% { right: 0vw; top: 80vh;}
+  50% { right: 45vw; top: 83vh;}
+  100% { right: 100vw; top: 80vh; }
+}
+
+.centralizado {
+  position: relative;
+  z-index: 10;
+  margin: 0 auto;
+  max-width: 430px;
+  background: rgba(9,32,63,0.7);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow);
+  border: var(--borda);
+  margin-top: 9vh;
+  text-align: center;
+  transition: background 0.5s;
+}
+
+h1, h2 {
+  margin-bottom: 0.7em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.botoes-niveis {
+  display: flex;
+  justify-content: center;
+  gap: 1.7rem;
+  margin-top: 1.5rem;
+}
+.botao-gradiente {
+  background: var(--gradiente-btn);
+  color: var(--azul-escuro);
+  border: none;
+  padding: .95em 2.2em;
+  margin: .5em 0;
+  border-radius: 2em;
+  font-size: 1.1em;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(9,32,63,0.12);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s, color .3s, transform .13s;
+}
+.botao-gradiente:hover, .botao-gradiente:focus {
+  background: var(--gradiente-btn2);
+  color: var(--azul-escuro);
+  transform: scale(1.04);
+}
+
+.barra-progresso {
+  width: 100%;
+  background: var(--cinza);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.3em;
+  height: 8px;
+  box-shadow: 0 2px 6px #0002;
+}
+#progress {
+  background: var(--gradiente-btn2);
+  height: 100%;
+  width: 0%;
+  transition: width .4s;
+  border-radius: 10px;
+}
+
+.alternativas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 1.8rem 0 1.2rem 0;
+}
+.alternativas button {
+  background: var(--azul-claro);
+  color: var(--azul-escuro);
+  border: none;
+  border-radius: 2em;
+  padding: 1em 1.4em;
+  box-shadow: 0 2px 10px #0001;
+  font-size: 1.07em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform .12s;
+  outline: none;
+}
+.alternativas button:hover:not([disabled]) {
+  background: var(--azul-medio);
+  color: var(--branco);
+  transform: scale(1.04);
+}
+
+/* Feedback certo/errado */
+.certa {
+  background: var(--verde) !important;
+  color: #04332b !important;
+  animation: certo-pulse .4s;
+}
+.errada {
+  background: var(--vermelho) !important;
+  color: #fff !important;
+  animation: errado-pulse 0.4s;
+}
+@keyframes certo-pulse {
+  0% { box-shadow: 0 0 0 0 var(--verde);}
+  100% { box-shadow: 0 0 0 18px transparent;}
+}
+@keyframes errado-pulse {
+  0% { box-shadow: 0 0 0 0 var(--vermelho);}
+  100% { box-shadow: 0 0 0 18px transparent;}
+}
+
+.oculto {
+  display: none !important;
+}
+
+.modo-btn {
+  position: absolute;
+  top: 1.2em;
+  right: 1.5em;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--azul-claro);
+  z-index: 10;
+  border-radius: 50%;
+  outline: none;
+  transition: background .2s;
+}
+.modo-btn:hover {
+  background: #2e425e44;
+}
+
+.pontuacao {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin: 2em 0 1em 0;
+  text-shadow: 0 2px 8px #0002;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .centralizado {
+    max-width: 97vw;
+    padding: 1.1em .2em;
+    margin-top: 1.5em;
+  }
+  .sea-animals::before, .sea-animals::after {
+    width: 40px !important;
+    height: 26px !important;
+  }
+}

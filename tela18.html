@@ -1,0 +1,26 @@
+<!-- Use este modelo para copiar e criar tela1.html, tela2.html, ... -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pergunta do Quiz</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="background">
+    <canvas id="bubbles"></canvas>
+    <div class="sea-animals"></div>
+  </div>
+  <main class="centralizado">
+    <div class="barra-progresso"><div id="progress"></div></div>
+    <h2 id="pergunta"></h2>
+    <div class="alternativas" id="alternativas"></div>
+    <button id="proxima" class="botao-gradiente oculto">Próxima</button>
+    <button id="toggle-modo" class="modo-btn" title="Alternar modo claro/escuro">🌙</button>
+  </main>
+  <audio id="acerto" src="acerto.mp3" preload="auto"></audio>
+  <audio id="erro" src="erro.mp3" preload="auto"></audio>
+  <script src="index.js"></script>
+</body>
+</html>

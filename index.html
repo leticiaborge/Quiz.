@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Fundo do Mar</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <div class="background">
+    <canvas id="bubbles"></canvas>
+    <div class="sea-animals"></div>
+  </div>
+  <main class="centralizado">
+    <h1>Bem-vindo ao Quiz Fundo do Mar!</h1>
+    <p>Teste seus conhecimentos sobre o fundo do mar. Escolha a dificuldade:</p>
+    <div class="botoes-niveis">
+      <button id="facil" class="botao-gradiente">Fácil</button>
+      <button id="dificil" class="botao-gradiente">Difícil</button>
+    </div>
+    <button id="toggle-modo" class="modo-btn" title="Alternar modo claro/escuro">🌙</button>
+  </main>
+  <audio id="acerto" src="acerto.mp3" preload="auto"></audio>
+  <audio id="erro" src="erro.mp3" preload="auto"></audio>
+  <script src="index.js"></script>
+</body>
+</html>
