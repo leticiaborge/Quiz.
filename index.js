@@ -1,5 +1,4 @@
-// Perguntas do quiz (faça as suas perguntas aqui!)
-// Cada pergunta: { pergunta, alternativas: [], resposta: <indice da correta> }
+
 const perguntas = {
   facil: [
     {
